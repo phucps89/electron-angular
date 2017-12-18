@@ -1,0 +1,9 @@
+<div class="login">
+  <h1>Login</h1>
+  <form method="post">
+    <input [(ngModel)]="loginData.username" type="text" name="u" placeholder="Username" required="required" />
+    <input [(ngModel)]="loginData.password" type="password" name="p" placeholder="Password" required="required" />
+    <button type="submit" class="btn btn-primary btn-block btn-large" (click)="login()">Let me in.</button>
+    <p style="margin-top: 1rem" class="text-danger">{{errorText}}</p>
+  </form>
+</div>

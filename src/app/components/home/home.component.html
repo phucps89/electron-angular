@@ -1,29 +1,231 @@
-<nav class="navbar navbar-default fixed">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">WebSiteName</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1
-          <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Page 1-1</a></li>
-          <li><a href="#">Page 1-2</a></li>
-          <li><a href="#">Page 1-3</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
+<form class="form-horizontal" >
+  <div class="container-fluid input-form">
+    <fieldset>
+      <legend>Customer Information</legend>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="row">
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2 col-xs-offset-3">
-      <i class="fa fa-address-book"></i>
+            <div class="col-xs-4">
+              <div class="form-group form-group-sm row">
+                <label class="col-sm-3 control-label" for="form_customer_name">Name</label>
+                <div class="col-sm-9">
+                  <input class="form-control" type="text" id="form_customer_name" [(ngModel)]="userOrder.user_name" name="username">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="form-group form-group-sm row">
+                <label class="col-sm-4 control-label" for="form_customer_age">Age</label>
+                <div class="col-sm-8">
+                  <input class="form-control" type="text" id="form_customer_age" [(ngModel)]="userOrder.user_age" name="age">
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <div class="form-group form-group-sm row">
+                <label class="col-sm-3 control-label" for="form_customer_address">Address</label>
+                <div class="col-sm-9">
+                  <input class="form-control" type="text" id="form_customer_address" [(ngModel)]="userOrder.user_addr" name="address">
+                </div>
+              </div>
+            </div>
 
-      <input id="ex1" class="slider" type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/>
+          </div>
+          <div class="row">
+            <div class="col-xs-4">
+              <div class="form-group form-group-sm row">
+                <label class="col-sm-3 control-label" for="form_customer_size">Size</label>
+                <div class="col-sm-9">
+                  <select class="form-control" id="form_customer_size" (change)="onChangeSize($event)">
+                    <option *ngFor="let size of sizes">{{size}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-6 col-xs-offset-2">
+              <div class="form-group form-group-sm row">
+                <label class="col-sm-3 control-label" for="form_customer_created_date">Date</label>
+                <div class="col-sm-9">
+                  <input type="text" readonly class="form-control datepicker" id="form_customer_created_date" [(ngModel)]="userOrder.user_date" name="date" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <img src="../../../assets/seldat_icon.png" style="margin-top: 5px">
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="row" style="margin-top: 1rem">
+      <div class="col-sm-4">
+        <fieldset>
+          <legend>Body Measurement</legend>
+          <div class="col-xs-12">
+            <div class="form-group form-group-sm row">
+              <label class="col-sm-3 control-label">Unit</label>
+              <div class="col-sm-9">
+                <select class="form-control"></select>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Neck</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input [(ngModel)]="userOrder.neck" name="slider_neck" id="slide_neck" class="slider" type="text" attr.data-slider-min="{{constant.min_neck}}" attr.data-slider-max="{{constant.max_neck}}" data-slider-step="0.1" attr.data-slider-value="{{userOrder.neck}}"/>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" class="form-control text-center input-size" [(ngModel)]="userOrder.neck" required name="neck">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Shoudler</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input data-slider-enabled="false" class="slider" type="text" attr.data-slider-min="{{constant.min_shoudler}}" attr.data-slider-max="{{constant.max_shoudler}}" data-slider-step="0.1" attr.data-slider-value="{{userOrder.real_shoudler}}"/>
+                  <div class="row" style="margin-top: 8px">
+                    <div class="col-xs-4 small">Ext <span class="text-danger">(mm)</span></div>
+                    <div class="col-xs-8">
+                      <input id="slide_ext_shoulder" type="text" data-slider-step="1" data-slider-min="0" data-slider-max="20" attr.data-slider-value="{{userOrder.ext_shoudler}}"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-3">
+                  <input disabled type="text" class="form-control text-center  input-size" [(ngModel)]="userOrder.shoudler" required name="shoudler">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Bust</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input id="slider_bust" class="slider" type="text" attr.data-slider-min="{{constant.min_bust}}" attr.data-slider-max="{{constant.max_bust}}" attr.data-slider-value="{{userOrder.bust}}"/>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" class="form-control text-center  input-size" [(ngModel)]="userOrder.bust" required name="bust">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Waist</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input id="slider_waist" class="slider" type="text" attr.data-slider-min="{{constant.min_waist}}" attr.data-slider-max="{{constant.max_waist}}" attr.data-slider-value="{{userOrder.waist}}"/>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" class="form-control text-center  input-size" [(ngModel)]="userOrder.waist" required name="waist">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Hips</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input id="slider_hip" class="slider" type="text" attr.data-slider-min="{{constant.min_hip}}" attr.data-slider-max="{{constant.max_hip}}" attr.data-slider-value="{{userOrder.hip}}"/>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" class="form-control text-center  input-size" [(ngModel)]="userOrder.hip" required name="hip">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+          <div class="col-xs-12">
+            <fieldset class="group-sm">
+              <legend>Height</legend>
+              <div class="row form-group-sm form-group">
+                <div class="col-xs-5 control-label">
+                  <input id="slider_height" class="slider" type="text" attr.data-slider-min="{{constant.min_height}}" attr.data-slider-max="{{constant.max_height}}" attr.data-slider-value="{{userOrder.height}}"/>
+                </div>
+                <div class="col-xs-3">
+                  <input type="text" class="form-control text-center  input-size" [(ngModel)]="userOrder.height" required name="height">
+                </div>
+                <div class="col-xs-4">
+                  <button class="btn btn-sm btn-default">Fit me</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-xs-12">
+            <fieldset>
+              <legend>Comment</legend>
+              <textarea class="form-control" rows="3" style="resize: none" [(ngModel)]="userOrder.comment" name="comment"></textarea>
+            </fieldset>
+          </div>
+          <div class="col-xs-12" style="margin-top: 1rem">
+            <fieldset>
+              <legend>Control</legend>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Fit all measurements</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Set size to minimum</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Set size to maximum</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Set size from Mannequin</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Save to Database</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <button class="btn btn-default" style="width: 100%">Stop</button>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <fieldset>
+          <legend>Mannequin Robot</legend>
+          <img src="../../../assets/mannequin/body.jpg">
+        </fieldset>
+      </div>
     </div>
   </div>
-</div>
+</form>

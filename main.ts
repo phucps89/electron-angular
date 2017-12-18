@@ -19,7 +19,7 @@ function createWindow() {
   win = new BrowserWindow({
     x: 0,
     y: 0,
-    width: 960,
+    width: 1000,
     height: 700,
     resizable: false
   });
@@ -30,6 +30,10 @@ function createWindow() {
   // Open the DevTools.
   if (serve) {
     win.webContents.openDevTools();
+  }
+
+  if(process.env.NODE_ENV == 'production'){
+    win.setMenu(null);
   }
 
   // Emitted when the window is closed.

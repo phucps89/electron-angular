@@ -10,12 +10,15 @@ export class ElectronService {
 
   ipcRenderer: typeof ipcRenderer;
   childProcess: typeof childProcess;
+  Big: any;
 
   constructor() {
     // Conditional imports
     if (this.isElectron()) {
       this.ipcRenderer = window.require('electron').ipcRenderer;
       this.childProcess = window.require('child_process');
+      this.Big = window.require('big.js');
+
     }
   }
 

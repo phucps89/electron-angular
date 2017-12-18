@@ -1,7 +1,73 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/datepicker";
+@import "assets/loading";
+
 html, body {
   margin: 0;
   padding: 0;
-
   height: 100%;
+  background: #eeeeee;
+}
+
+.fase {
+  color: #ffffff;
+  background-color: #119c21;
+  font-size: 1.5em;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  margin-bottom: 0;
+}
+.fase2 {
+  margin-top: 0;
+  color: #ffffff;
+  background-color: #42c250;
+  font-size: 1.3em;
+  font-weight: normal;
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-bottom: 0;
+}
+.fase3 {
+  margin-top: 0;
+  color: #119c21;
+  background-color: #c2ffca;
+  font-size: 1.3em;
+  font-weight: normal;
+  text-align: center;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  margin-bottom: 0;
+}
+.row.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.slider.slider-horizontal{
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 7px;
+}
+
+.navbar-xs { min-height:28px; height: 28px; }
+.navbar-xs .navbar-brand{ padding: 0px 12px;font-size: 16px;line-height: 28px; }
+.navbar-xs .navbar-nav > li > a {  padding-top: 0px; padding-bottom: 0px; line-height: 28px; }
+
+legend{
+  font-size: 18px;
+  border-bottom-color: #B8CFE5;
+  margin-bottom: 10px;
+}
+
+.group-sm{
+  legend{
+    font-size: 14px;
+  }
 }

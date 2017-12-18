@@ -1,1 +1,19 @@
-<router-outlet></router-outlet>
+<div #loadingDialog class="loading-box">
+  <div class="cssload-thecube">
+    <div class="cssload-cube cssload-c1"></div>
+    <div class="cssload-cube cssload-c2"></div>
+    <div class="cssload-cube cssload-c4"></div>
+    <div class="cssload-cube cssload-c3"></div>
+  </div>
+</div>
+<nav #navMenu class="navbar navbar-default navbar-xs navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="{{selectedMenu == 0 ? 'active' : ''}}"><a href="#" (click)="goToManequinControl()">Manequin Control</a></li>
+      <li class="{{selectedMenu == 1 ? 'active' : ''}}"><a href="#" (click)="goToCustomerLog()">Customer Log</a></li>
+    </ul>
+  </div>
+</nav>
+<section>
+  <router-outlet></router-outlet>
+</section>
